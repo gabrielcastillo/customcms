@@ -22,7 +22,7 @@ class User extends Admin_Controller {
     $rules = $this->user_model->rules_admin;
 
     $id || $rules['password']['rules'] .= '|required';
-
+    
     $this->form_validation->set_rules($rules);
 
     if( $this->form_validation->run() == TRUE ){
