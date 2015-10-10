@@ -10,6 +10,17 @@ class Admin_controller extends Base_Controller {
     $this->load->library('form_validation');
     $this->load->model('user_model');
 
+    $exception_urls = array(
+      'admin/user/login',
+      'admin/user/logout',
+      );
+
+    if( in_array(uri_string(), $exception_urls) == FALSE ){
+      if( $this->user_model->loggedin() == FALSE ){
+        redirect('admin/user/login');
+      }
+    }
+
   }
 
 }
