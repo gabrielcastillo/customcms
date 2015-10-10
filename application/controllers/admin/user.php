@@ -8,6 +8,25 @@ class User extends Admin_Controller {
     parent::__construct();
   }
 
+  public function index()
+  {
+    $this->data['users'] = $this->user_model->get();
+    $this->data['subview'] = 'admin/user/index';
+    $this->load->view('admin/_layout_main', $this->data);
+  }
+
+  public function edit( $id = NULL )
+  {
+    $id == NULL || $this->data['user'] =  $this->user_model->get( $id );
+    $this->data['subview'] = 'admin/user/edit';
+    $this->load->view('admin/_layout_main', $this->data);
+  }
+
+  public function delete()
+  {
+
+  }
+
   public function login()
   {
     $dashboard = 'admin/dashboard';

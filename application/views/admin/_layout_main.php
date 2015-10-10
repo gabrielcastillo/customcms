@@ -3,9 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-9">
-        <section>
-          <h2>Page Name</h2>
-        </section>
+        <?php $this->load->view($subview); ?>
       </div>
       <div class="col-md-3">
         <section>
