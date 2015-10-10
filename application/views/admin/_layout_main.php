@@ -1,5 +1,5 @@
-<?php $this->load->view('componets/header', TRUE); ?>
-<?php $this->load->view('componets/navbar'); ?>
+<?php $this->load->view('admin/componets/header', TRUE); ?>
+<?php $this->load->view('admin/componets/navbar'); ?>
   <div class="container">
     <div class="row">
       <div class="col-md-9">
@@ -16,4 +16,4 @@
       </div>
     </div>
   </div>
-<?php $this->load->view('componets/footer'); ?>
+<?php $this->load->view('admin/componets/footer'); ?>
