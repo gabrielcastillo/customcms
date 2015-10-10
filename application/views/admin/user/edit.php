@@ -1,3 +1,5 @@
+<h3><?php ucwords($user->name); ?></h3>
+
 <?php echo $user->id; ?>
 <br />
 <?php echo $user->name; ?>
