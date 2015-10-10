@@ -3,16 +3,16 @@
 </div>
 <div class="modal-body">
   <?php echo validation_errors(); ?>
-   <?php echo form_open('admin/user/edit', array('id' => 'edit_form', 'class' => 'form', 'role' => 'form')); ?>
+   <?php echo form_open('admin/user/edit/' . $user->id, array('id' => 'edit_form', 'class' => 'form', 'role' => 'form')); ?>
    <table class="table">
     <tr>
       <th>Name</th>
-      <?php $args = array('id' => 'name', 'class' => 'form-control input-sm', 'type' => 'text', 'name' => 'name', 'value' => set_value('name'), 'autocomplete' => 'off'); ?>
+      <?php $args = array('id' => 'name', 'class' => 'form-control input-sm', 'type' => 'text', 'name' => 'name', 'value' => set_value('name', $user->name), 'autocomplete' => 'off'); ?>
       <td><?php echo form_input($args); ?></td>
     </tr>
     <tr>
       <th>Email</th>
-      <?php $args = array('id' => 'email', 'class' => 'form-control input-sm', 'type' => 'email', 'name' => 'email', 'value' => set_value('name'), 'autocomplete' => 'off'); ?>
+      <?php $args = array('id' => 'email', 'class' => 'form-control input-sm', 'type' => 'email', 'name' => 'email', 'value' => set_value('email', $user->email), 'autocomplete' => 'off'); ?>
       <td><?php echo form_input($args); ?></td>
     </tr>
     <tr>
@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <td></td>
-      <td><?php echo form_submit('login', 'Login', 'class = btn btn-primary'); ?></td>
+      <td><?php echo form_submit('edit', 'Edit', 'class = btn btn-primary'); ?></td>
     </tr>
    </table>
    <?php echo form_close(); ?>

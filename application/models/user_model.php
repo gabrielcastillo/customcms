@@ -25,11 +25,6 @@ class User_model extends Base_Model {
       'label' => 'name', 
       'rules' => 'trim|required|xss_clean'
       ),
-    'order'     => array(
-      'field' => 'order', 
-      'label' => 'order', 
-      'rules' => 'trim|is_natural|xss_clean'
-      ),
     'email'     => array(
       'field' => 'email', 
       'label' => 'email', 
@@ -85,6 +80,15 @@ class User_model extends Base_Model {
     return hash('sha512', $string . config_item('encryption_key'));
   }
 
+  public function get_new()
+  {
+    $user = new stdClass();
+
+    $user->name = '';
+    $user->email = '';
+    $user->password = '';
+    return $user;
+  }
 
 }
 

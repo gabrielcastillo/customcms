@@ -17,27 +17,28 @@ class User extends Admin_Controller {
 
   public function edit( $id = NULL )
   {
-    $id == NULL || $this->data['user'] =  $this->user_model->get( $id );
+
+
+
+    if( $id ){
+      $this->data['user'] = $this->user_model->get($id);
+      count($this->data['user']) || $this->data['errors'][] = 'User counld not be found';
+    }else{
+      $this->data['user'] = $this->user_model->get_new();
+    }
 
     $rules = $this->user_model->rules_admin;
 
     $id || $rules['password']['rules'] .= '|required';
-    
+
     $this->form_validation->set_rules($rules);
 
     if( $this->form_validation->run() == TRUE ){
-
-      if( $this->user_model->login() == TRUE ){
-
-        redirect($dashboard);
-
-      }else{
-
-        $this->session->set_flashdata('error', 'Failed login');
-        redirect('admin/user/login', 'refresh');
-
-      }
-
+      $data = $this->user_model->array_from_post(array('name', 'email', 'password'));
+      $data['password'] = $this->user_model->hash($data['password']);
+      
+      $this->user_model->save($data, $id);
+      redirect('admin/user');
     }
 
     $this->data['subview'] = 'admin/user/edit';
