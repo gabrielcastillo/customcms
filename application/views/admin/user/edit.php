@@ -3,23 +3,27 @@
 </div>
 <div class="modal-body">
   <?php echo validation_errors(); ?>
-   <?php echo form_open(); ?>
+   <?php echo form_open('admin/user/edit', array('id' => 'edit_form', 'class' => 'form', 'role' => 'form')); ?>
    <table class="table">
     <tr>
-      <td>Name</td>
-      <td><?php echo form_input('name', set_value('name')); ?></td>
+      <th>Name</th>
+      <?php $args = array('id' => 'name', 'class' => 'form-control input-sm', 'type' => 'text', 'name' => 'name', 'value' => set_value('name'), 'autocomplete' => 'off'); ?>
+      <td><?php echo form_input($args); ?></td>
     </tr>
     <tr>
-      <td>Email</td>
-      <td><?php echo form_input('email', set_value('email')); ?></td>
+      <th>Email</th>
+      <?php $args = array('id' => 'email', 'class' => 'form-control input-sm', 'type' => 'email', 'name' => 'email', 'value' => set_value('name'), 'autocomplete' => 'off'); ?>
+      <td><?php echo form_input($args); ?></td>
     </tr>
     <tr>
-      <td>Password</td>
-      <td><?php echo form_password('password'); ?></td>
+      <th>Password</th>
+      <?php $args = array('id' => 'password', 'class' => 'form-control input-sm', 'type' => 'password', 'name' => 'password'); ?>
+      <td><?php echo form_password($args); ?></td>
     </tr>
     <tr>
-      <td>Confirm Password</td>
-      <td><?php echo form_password('confirm'); ?></td>
+      <th>Confirm Password</th>
+      <?php $args = array('id' => 'confirm', 'class' => 'form-control input-sm', 'type' => 'password', 'name' => 'confirm'); ?>
+      <td><?php echo form_password($args); ?></td>
     </tr>
     <tr>
       <td></td>
