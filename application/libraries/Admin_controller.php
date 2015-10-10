@@ -7,6 +7,7 @@ class Admin_controller extends Base_Controller {
   {
     parent::__construct();
 
+
     $this->load->library('form_validation');
     $this->load->model('user_model');
   }
