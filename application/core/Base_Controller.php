@@ -9,6 +9,12 @@ class Base_Controller extends CI_Controller {
   {
     parent::__construct();
     $this->data['site_name'] = 'Custom CMS';
+
+    if ($this->db->table_exists('user_sessions'))
+    {
+       $this->load->library('session');
+    } 
+
   }
 
 }
