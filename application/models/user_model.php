@@ -7,8 +7,44 @@ class User_model extends Base_Model {
   protected $_order_by = 'name';
 
   public $rules = array(
-    'email'     => array('field' => 'email', 'label' => 'email', 'rules' => 'trim|required|valid_email|xss_clean'),
-    'password'  => array('field' => 'password', 'label' => 'password', 'rules' => 'trim|required'),
+    'email'     => array(
+      'field' => 'email', 
+      'label' => 'email', 
+      'rules' => 'trim|required|valid_email|xss_clean'
+      ),
+    'password'  => array(
+      'field' => 'password', 
+      'label' => 'password', 
+      'rules' => 'trim|required'
+      ),
+    );
+
+  public $rules_admin = array(
+    'name'      => array(
+      'field' => 'name', 
+      'label' => 'name', 
+      'rules' => 'trim|required|xss_clean'
+      ),
+    'order'     => array(
+      'field' => 'order', 
+      'label' => 'order', 
+      'rules' => 'trim|is_natural|xss_clean'
+      ),
+    'email'     => array(
+      'field' => 'email', 
+      'label' => 'email', 
+      'rules' => 'trim|required|valid_email|xss_clean|callback__unique_email'
+      ),
+    'password'  => array(
+      'field' => 'password', 
+      'label' => 'password', 
+      'rules' => 'trim'
+      ),
+    'confirm'   => array(
+      'field' => 'confirm', 
+      'label' => 'confirm', 
+      'rules' => 'trim|matches[password]'
+      ),
     );
 
   public function __construct()
