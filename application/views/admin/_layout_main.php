@@ -7,7 +7,7 @@
       </div>
       <div class="col-md-3">
         <section>
-          <?php echo mailto('gabriel@stellervision.com', '<i class="glyphicon glyphicon-user"></i> gabriel@stellervision.com'); ?>
+          <?php echo mailto($this->session->userdata('email'), '<i class="glyphicon glyphicon-user"></i> '. $this->session->userdata('email')); ?>
           <br />
           <?php echo anchor('admin/user/logout', '<i class="glyphicon glyphicon-off"></i> Logout'); ?>
         </section>
