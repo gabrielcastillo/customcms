@@ -8,11 +8,13 @@
    <table class="table">
     <tr>
       <td>Email</td>
-      <td><?php echo form_input('email', set_value('email')); ?></td>
+      <?php $args = array('id' => 'email', 'class' => 'form-control input-sm', 'type' => 'email', 'name' => 'email', 'value' => set_value('email'), 'autocomplete' => 'off', 'autofocus' => 'on'); ?>
+      <td><?php echo form_input($args); ?></td>
     </tr>
     <tr>
       <td>Password</td>
-      <td><?php echo form_password('password'); ?></td>
+      <?php $args = array('id' => 'password', 'class' => 'form-control input-sm', 'type' => 'password', 'name' => 'password', 'value' => set_value('password')); ?>
+      <td><?php echo form_password($args); ?></td>
     </tr>
     <tr>
       <td></td>

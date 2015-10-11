@@ -84,9 +84,11 @@ class User_model extends Base_Model {
   {
     $user = new stdClass();
 
-    $user->name = '';
-    $user->email = '';
+    $user->id       = '';
+    $user->name     = '';
+    $user->email    = '';
     $user->password = '';
+    
     return $user;
   }
 

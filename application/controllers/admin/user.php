@@ -18,8 +18,6 @@ class User extends Admin_Controller {
   public function edit( $id = NULL )
   {
 
-
-
     if( $id ){
       $this->data['user'] = $this->user_model->get($id);
       count($this->data['user']) || $this->data['errors'][] = 'User counld not be found';
@@ -36,7 +34,7 @@ class User extends Admin_Controller {
     if( $this->form_validation->run() == TRUE ){
       $data = $this->user_model->array_from_post(array('name', 'email', 'password'));
       $data['password'] = $this->user_model->hash($data['password']);
-      
+
       $this->user_model->save($data, $id);
       redirect('admin/user');
     }
@@ -45,9 +43,10 @@ class User extends Admin_Controller {
     $this->load->view('admin/_layout_main', $this->data);
   }
 
-  public function delete()
+  public function delete( $id )
   {
-
+    $this->user_model->delete( $id );
+    redirect('admin/user');
   }
 
   public function login()
