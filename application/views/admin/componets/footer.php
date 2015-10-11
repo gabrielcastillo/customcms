@@ -7,8 +7,8 @@
       tinymce.init({
         selector: "textarea.tinymce",
         theme: "modern",
-      
         height: 300,
+        menubar: false,
         plugins: [
              "autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
              "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime nonbreaking",
