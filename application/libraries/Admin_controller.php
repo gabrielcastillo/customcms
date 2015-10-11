@@ -9,6 +9,7 @@ class Admin_controller extends Base_Controller {
 
     $this->load->library('form_validation');
     $this->load->model('user_model');
+    $this->load->model('page_model');
 
     $exception_urls = array(
       'admin/user/login',
