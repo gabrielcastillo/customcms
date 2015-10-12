@@ -7,14 +7,14 @@
       tinymce.init({
         selector: "textarea.tinymce",
         theme: "modern",
-        height: 320,
+        height: 420,
         menubar: false,
         plugins: [
           "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
           "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
           "save table contextmenu directionality template paste textcolor"
         ],
-        toolbar: "undo redo | styleselect | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | media fullpage | code preview fullscreen",
+        toolbar: "undo redo | styleselect | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | media fullpage | code preview fullscreen | save",
         image_advtab: true ,
         external_filemanager_path:"/filemanager/",
         filemanager_title:"Filemanager" ,
@@ -22,6 +22,12 @@
         fullscreen_new_window : true,
         fullscreen_settings : {
                 theme_advanced_path_location : "top"
+        },
+        theme_advanced_source_editor_height: 800,
+        theme_advanced_source_editor_width: 460,
+        save_enablewhendirty: true,
+        save_onsavecallback: function() {
+          $('form').submit();
         }
 
       }); 
@@ -36,5 +42,6 @@
       });
     });
     </script>
+    
   </body>
 </html>
