@@ -12,6 +12,11 @@ class Page_model extends Base_Model {
 
 
   public $rules = array(
+    'parent_id'     => array(
+      'field' => 'parent_id', 
+      'label' => 'parent page', 
+      'rules' => 'trim|intval'
+      ),
     'title'      => array(
       'field' => 'title', 
       'label' => 'title', 
@@ -22,11 +27,6 @@ class Page_model extends Base_Model {
       'label' => 'slug', 
       'rules' => 'trim|required|max_lenght[100]|url_title|xss_clean|callback__unique_slug'
       ),
-    /*'order'  => array(
-      'field' => 'order', 
-      'label' => 'order', 
-      'rules' => 'trim|is_natural|xss_clean'
-      ),*/
     'body'   => array(
       'field' => 'body', 
       'label' => 'body', 
@@ -50,9 +50,45 @@ class Page_model extends Base_Model {
     $page->slug   = '';
     $page->order  = '';
     $page->body   = '';
-    
+    $page->parent_id = 0;
+
     return $page;
   }
+
+  public function get_with_parent( $id = NULL, $single = FALSE)
+  {
+    $this->db->select('pages.*, p.slug as parent_slug, p.title as parent_title');
+    $this->db->join('pages as p', 'pages.parent_id=p.id', 'left');
+    return parent::get(  $id, $single);
+  }
+
+  public function get_no_parents( $id )
+  {
+    
+    $this->db->select('id, title');
+    $this->db->where('id !=', $id);
+    $pages = parent::get();
+
+    $array = array(0 => 'No Parent');
+
+    if( count($pages) ){
+      foreach( $pages as $page ){
+        $array[$page->id] = $page->title;
+      }
+    }
+
+    return $array;
+  }
+
+  public function delete( $id )
+  {
+    parent::delete($id);
+
+    $this->db->set(array('parent_id' => 0))->where('parent_id', $id)->update($this->_table_name);
+  }
+
+
+
 
 }
 

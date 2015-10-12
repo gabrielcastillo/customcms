@@ -10,7 +10,7 @@ class Page extends Admin_Controller {
 
   public function index()
   {
-    $this->data['pages'] = $this->page_model->get();
+    $this->data['pages'] = $this->page_model->get_with_parent();
     $this->data['subview'] = 'admin/page/index';
     $this->load->view('admin/_layout_main', $this->data);
   }
@@ -25,11 +25,13 @@ class Page extends Admin_Controller {
       $this->data['page'] = $this->page_model->get_new();
     }
 
+    $this->data['pages_no_parent'] = $this->page_model->get_no_parents( $this->uri->segment(4));
+
     $rules = $this->page_model->rules;
     $this->form_validation->set_rules($rules);
 
     if( $this->form_validation->run() == TRUE ){
-      $data = $this->page_model->array_from_post(array('title', 'slug', 'order', 'body'));
+      $data = $this->page_model->array_from_post(array('parent_id', 'title', 'slug', 'order', 'body'));
       $this->page_model->save($data, $id);
       redirect('admin/page');
     }

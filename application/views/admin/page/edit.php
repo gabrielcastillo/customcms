@@ -6,6 +6,11 @@
    <?php echo form_open('admin/page/edit/' . $page->id, array('id' => 'edit_form', 'class' => 'form', 'role' => 'form')); ?>
    <table class="table">
     <tr>
+      <th>Parent Page</th>
+      <?php //$args = array('id' => 'title', 'class' => 'form-control input-sm', 'type' => 'text', 'name' => 'title', 'value' => set_value('title', $page->title), 'autocomplete' => 'off'); ?>
+      <td><?php echo form_dropdown('parent_id', $pages_no_parent, $this->input->post('parent_id') ? $this->input->post('parent_id') : $page->parent_id); ?></td>
+    </tr>
+    <tr>
       <th>Title</th>
       <?php $args = array('id' => 'title', 'class' => 'form-control input-sm', 'type' => 'text', 'name' => 'title', 'value' => set_value('title', $page->title), 'autocomplete' => 'off'); ?>
       <td><?php echo form_input($args); ?></td>
