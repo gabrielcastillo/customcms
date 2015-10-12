@@ -1,6 +1,6 @@
 <?php $this->load->view('admin/componets/header', TRUE); ?>
 <?php $this->load->view('admin/componets/navbar'); ?>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-9">
         <?php $this->load->view($subview); ?>

@@ -1,5 +1,8 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+include( APPPATH . 'libraries/Admin_controller.php');
+include( APPPATH . 'libraries/Frontend_controller.php');
+
 
 class Base_Controller extends CI_Controller {
 
