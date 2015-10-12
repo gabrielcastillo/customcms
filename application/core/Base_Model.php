@@ -122,7 +122,11 @@ class Base_Model extends CI_Model {
     $data = array();
 
     foreach( $fields as $field ){
-      $data[$field] = $this->input->post($field, TRUE);
+      if( $field == 'body' ){
+        $data[$field] = $this->input->post($field);
+      }else{
+        $data[$field] = $this->input->post($field, TRUE);
+      }
     }
 
     return $data;

@@ -7,15 +7,24 @@
       tinymce.init({
         selector: "textarea.tinymce",
         theme: "modern",
-        height: 300,
+        height: 320,
         menubar: false,
         plugins: [
-             "autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
-             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime nonbreaking",
-             "save table contextmenu directionality textcolor"
-       ],
-       toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | preview media fullpage | forecolor backcolor emoticons", 
-     }); 
+          "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+          "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+          "save table contextmenu directionality template paste textcolor"
+        ],
+        toolbar: "undo redo | styleselect | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | media fullpage | code preview fullscreen",
+        image_advtab: true ,
+        external_filemanager_path:"/filemanager/",
+        filemanager_title:"Filemanager" ,
+        external_plugins: { "filemanager" : "/filemanager/plugin.min.js"},
+        fullscreen_new_window : true,
+        fullscreen_settings : {
+                theme_advanced_path_location : "top"
+        }
+
+      }); 
 
 
 
