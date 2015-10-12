@@ -27,6 +27,7 @@
         theme_advanced_source_editor_width: 460,
         save_enablewhendirty: true,
         save_onsavecallback: function() {
+          //Toolbar save method
           $('form').submit();
         }
 
