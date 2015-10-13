@@ -12,10 +12,10 @@
         plugins: [
           "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
           "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-          "save table contextmenu directionality template paste textcolor"
+          "save table contextmenu directionality template paste textcolor codemirror"
         ],
         toolbar: "undo redo | styleselect | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | media fullpage | code preview fullscreen | save",
-        image_advtab: true ,
+        image_advtab: true,
         external_filemanager_path:"/filemanager/",
         filemanager_title:"Filemanager" ,
         external_plugins: { "filemanager" : "/filemanager/plugin.min.js"},
@@ -31,6 +31,22 @@
           $('form').submit();
         },
         document_base_url: "<?php echo base_url(); ?>",
+        codemirror: {
+        indentOnInit: true, // Whether or not to indent code on init. 
+        path: 'CodeMirror', // Path to CodeMirror distribution
+        config: {           // CodeMirror config object
+           mode: 'application/x-httpd-php',
+           lineNumbers: true
+        },
+        jsFiles: [          // Additional JS files to load
+           'mode/clike/clike.js',
+           'mode/php/php.js'
+        ],
+        cssFiles: [
+           'theme/neat.css',
+           'theme/elegant.css'
+        ]
+      }
       }); 
 
 
