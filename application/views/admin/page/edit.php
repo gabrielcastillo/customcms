@@ -2,7 +2,10 @@
   <h4 class="modal-title">Add page</h4>
 </div>
 <div class="modal-body">
-  <?php echo validation_errors(); ?>
+  <?php echo $this->session->flashdata('message'); ?>
+  <?php if( validation_errors() ): ?>
+    <?php echo alert_message('danger', validation_errors()); ?>
+  <?php endif; ?>
    <?php echo form_open('admin/page/edit/' . $page->id, array('id' => 'edit_form', 'class' => 'form', 'role' => 'form')); ?>
    <table class="table">
     <tr>

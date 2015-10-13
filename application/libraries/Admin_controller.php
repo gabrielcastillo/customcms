@@ -28,6 +28,8 @@ class Admin_controller extends Base_Controller {
       }
     }
 
+    $this->form_validation->set_error_delimiters('', '');
+
   }
 
 }
