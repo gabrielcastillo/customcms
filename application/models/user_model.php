@@ -49,6 +49,7 @@ class User_model extends Base_Model {
 
   public function login()
   {
+
     $user = $this->user_model->get_by(array(
       'email' => $this->input->post('email', TRUE),
       'password' => $this->hash($this->input->post('password', TRUE))

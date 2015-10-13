@@ -3,7 +3,10 @@
   <p>Please login with your credentials</p>
 </div>
 <div class="modal-body">
-  <?php echo validation_errors(); ?>
+  <?php echo $this->session->flashdata('message'); ?>
+  <?php if( validation_errors() ): ?>
+    <?php echo alert_message('danger', validation_errors()); ?>
+  <?php endif; ?>
    <?php echo form_open(); ?>
    <table class="table">
     <tr>

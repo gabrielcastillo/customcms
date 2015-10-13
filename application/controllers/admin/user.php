@@ -66,8 +66,8 @@ class User extends Admin_Controller {
 
       }else{
 
-        $this->session->set_flashdata('error', 'Failed login');
-        redirect('admin/user/login', 'refresh');
+        $this->session->set_flashdata('message', alert_message('danger', 'Failed login'));
+        redirect('admin/user/login');
 
       }
     }
