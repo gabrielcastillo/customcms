@@ -35,7 +35,12 @@ class Page extends Admin_Controller {
      
       $id = $this->page_model->save($data, $id);
 
-      $this->session->set_flashdata('message', alert_message('success', 'Save complete!'));
+      if( $id == FALSE ){
+        $this->session->set_flashdata('message', alert_message('danger', 'Save Failed!'));
+      }else{
+        $this->session->set_flashdata('message', alert_message('success', 'Save complete!'));
+      }
+      
       redirect('admin/page/edit/' . $id);
     }
 

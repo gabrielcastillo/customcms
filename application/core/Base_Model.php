@@ -91,8 +91,12 @@ class Base_Model extends CI_Model {
 
     }
 
+    if( $this->db->affected_rows() > 0 ){
+      return $id;
+    }else{
+      return FALSE;
+    }
 
-    return $id;
   }
 
 
