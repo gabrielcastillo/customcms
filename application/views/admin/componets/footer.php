@@ -32,13 +32,13 @@
         },
         document_base_url: "<?php echo base_url(); ?>",
         codemirror: {
-        indentOnInit: true, // Whether or not to indent code on init. 
-        path: 'CodeMirror', // Path to CodeMirror distribution
-        config: {           // CodeMirror config object
+        indentOnInit: true,
+        path: 'CodeMirror',
+        config: { 
            mode: 'application/x-httpd-php',
            lineNumbers: true
         },
-        jsFiles: [          // Additional JS files to load
+        jsFiles: [ 
            'mode/clike/clike.js',
            'mode/php/php.js'
         ],

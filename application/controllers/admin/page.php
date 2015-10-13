@@ -32,8 +32,11 @@ class Page extends Admin_Controller {
 
     if( $this->form_validation->run() == TRUE ){
       $data = $this->page_model->array_from_post(array('parent_id', 'title', 'slug', 'order', 'body'));
-      $this->page_model->save($data, $id);
-      redirect('admin/page');
+     
+      $id = $this->page_model->save($data, $id);
+
+      $this->session->set_flashdata('message', alert_message('success', 'Save complete!'));
+      redirect('admin/page/edit/' . $id);
     }
 
     $this->data['subview'] = 'admin/page/edit';
