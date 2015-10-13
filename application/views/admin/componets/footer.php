@@ -29,8 +29,8 @@
         save_onsavecallback: function() {
           //Toolbar save method
           $('form').submit();
-        }
-
+        },
+        document_base_url: "<?php echo base_url(); ?>",
       }); 
 
 

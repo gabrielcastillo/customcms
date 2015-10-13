@@ -18,6 +18,7 @@ class Admin_controller extends Base_Controller {
       'admin/user/login',
       'admin/user/logout',
       'admin/user/reset-password',
+      'admin/user/password',
       );
 
     //Check if user is loggedin, else redirect.
