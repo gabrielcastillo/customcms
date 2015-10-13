@@ -1,8 +1,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="<?php echo base_url('public/js/bootstrap.min.js'); ?>"></script>
+    <?php if( $this->uri->segment(2) == 'page'): ?>
+    <script src="<?php echo base_url('public/js/jquery-ui.min.js'); ?>"></script>
+    <script src="<?php echo base_url('public/js/nestedSortable.js'); ?>"></script>
     <script src="<?php echo base_url('public/js/tinymce/tinymce.min.js'); ?>"></script>
     <script type="text/javascript">
     $(document).ready(function(){
+
+
+
 
       tinymce.init({
         selector: "textarea.tinymce",
@@ -32,23 +38,22 @@
         },
         document_base_url: "<?php echo base_url(); ?>",
         codemirror: {
-        indentOnInit: true,
-        path: 'CodeMirror',
-        config: { 
-           mode: 'application/x-httpd-php',
-           lineNumbers: true
-        },
-        jsFiles: [ 
-           'mode/clike/clike.js',
-           'mode/php/php.js'
-        ],
-        cssFiles: [
-           'theme/neat.css',
-           'theme/elegant.css'
-        ]
-      }
+          indentOnInit: true,
+          path: 'CodeMirror',
+          config: { 
+             mode: 'application/x-httpd-php',
+             lineNumbers: true
+          },
+          jsFiles: [ 
+             'mode/clike/clike.js',
+             'mode/php/php.js'
+          ],
+          cssFiles: [
+             'theme/neat.css',
+             'theme/elegant.css'
+          ]
+        }
       }); 
-
 
 
       //Create slugs for pages.
@@ -57,8 +62,35 @@
         var string = title.replace(/\s+/g, "-");
         $('input[name="slug"]').val(string.toLowerCase());
       });
+
+      $.post('<?php echo base_url("admin/page/order_ajax"); ?>', {}, function(data){
+        $('#orderResult').html(data);
+        $('.sortable').nestedSortable({
+            handle: 'div',
+            items: 'li',
+            toleranceElement: '> div',
+            maxLevels: 2,
+            cancel: ".disable-sort" 
+        });
+      });
+
+      $('#save').on('click', function(){
+        oSortable = $('.sortable').nestedSortable('toArray');
+        $.post('<?php echo base_url("admin/page/order_ajax"); ?>', {sortable: oSortable}, function(data){
+          $('#orderResult').html(data);
+          $('.sortable').nestedSortable({
+              handle: 'div',
+              items: 'li',
+              toleranceElement: '> div',
+              maxLevels: 2,
+              cancel: ".disable-sort" 
+          });
+        });
+      });
+
+
     });
     </script>
-    
+    <?php endif; ?>
   </body>
 </html>

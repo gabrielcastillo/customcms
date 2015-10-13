@@ -54,6 +54,27 @@ class Page extends Admin_Controller {
     redirect('admin/page');
   }
 
+
+  public function order()
+  {
+    $this->data['sortable'] = TRUE;
+    $this->data['subview'] = 'admin/page/order';
+    $this->load->view('admin/_layout_main', $this->data);
+  }
+
+  //Update database with order with ajax function.
+  public function order_ajax()
+  {
+
+    if( isset($_POST['sortable']) ){
+      $this->page_model->save_order($_POST['sortable']);
+    }
+
+    $this->data['pages'] = $this->page_model->get_nested();
+    $this->load->view('admin/page/order_ajax', $this->data);
+  }
+
+
   //Check is email is unique when creating new page, and or when updating, if updating page, email will not be checked.
   public function _unique_slug( $str )
   {

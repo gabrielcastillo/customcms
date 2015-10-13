@@ -80,6 +80,35 @@ class Page_model extends Base_Model {
     return $array;
   }
 
+  public function get_nested()
+  {
+    $pages = $this->db->get('pages')->result_array();
+
+    $array = array();
+
+    foreach( $pages as $page ){
+      if( !$page['parent_id']){
+        $array[$page['id']] = $page;
+      }else{
+        $array[$page['parent_id']]['children'][] = $page;
+      }
+    }
+
+    return $array;
+  }
+
+  public function save_order( $pages)
+  { 
+    if( count($pages) ){
+      foreach( $pages as $order => $page ){
+        if( $page['item_id'] != '' ){
+          $data = array('parent_id' => (int) $page['parent_id'], 'order' => $order);
+          $this->db->set($data)->where($this->_primary_key, $page['item_id'])->update($this->_table_name);
+        }
+      }
+    }
+  }
+
   public function delete( $id )
   {
     parent::delete($id);
