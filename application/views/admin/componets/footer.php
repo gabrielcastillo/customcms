@@ -7,9 +7,6 @@
     <script type="text/javascript">
     $(document).ready(function(){
 
-
-
-
       tinymce.init({
         selector: "textarea.tinymce",
         theme: "modern",
@@ -62,6 +59,13 @@
         var string = title.replace(/\s+/g, "-");
         $('input[name="slug"]').val(string.toLowerCase());
       });
+
+      $('input[name="slug"]').on('keyup', function(){
+        var slug = $(this).val();
+        var string = slug.replace(/\s+/g, '-');
+        $('input[name="slug"]').val(string.toLowerCase());
+      });
+
 
       $.post('<?php echo base_url("admin/page/order_ajax"); ?>', {}, function(data){
         $('#orderResult').html(data);

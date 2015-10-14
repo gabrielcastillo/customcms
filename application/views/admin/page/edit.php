@@ -29,17 +29,6 @@
       <td><?php echo form_input($args); ?></td>
     </tr>
     <tr>
-      <th>Page Order</th>
-      <?php $args = array('id' => 'order', 'class' => 'form-control input-sm', 'type' => 'text', 'name' => 'order', 'value' => set_value('order', $page->order), 'autocomplete' => 'off'); ?>
-      <td>
-        <div class="row">
-          <div class="col-xs-6 col-sm-2 col-md-1 col-lg-1">
-            <?php echo form_input($args); ?>
-          </div>
-        </div>
-      </td>
-    </tr>
-    <tr>
       <th>Body</th>
       <?php $args = array('id' => 'body', 'class' => 'form-control input-sm tinymce', 'name' => 'body', 'value' => set_value('body', $page->body)); ?>
       <td><?php echo form_textarea($args); ?></td>
