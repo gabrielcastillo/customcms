@@ -48,7 +48,7 @@ class Page_model extends Base_Model {
     $page->id     = '';
     $page->title  = '';
     $page->slug   = '';
-    $page->order  = '';
+    $page->order  = '1';
     $page->body   = '';
     $page->parent_id = 0;
 
@@ -66,7 +66,7 @@ class Page_model extends Base_Model {
   {
     
     $this->db->select('id, title');
-    $this->db->where('id !=', $id);
+    $this->db->where('parent_id !=', $id);
     $pages = parent::get();
 
     $array = array(0 => 'No Parent');

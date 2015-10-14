@@ -7,6 +7,7 @@
     <?php echo alert_message('danger', validation_errors()); ?>
   <?php endif; ?>
    <?php echo form_open('admin/page/edit/' . $page->id, array('id' => 'edit_form', 'class' => 'form', 'role' => 'form')); ?>
+   <?php echo form_hidden('order', $page->order); ?>
    <table class="table">
     <tr>
       <th>Parent Page</th>
