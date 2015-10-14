@@ -7,6 +7,7 @@
     $str = '';
 
     if( count($array) ){
+
       $str .= $child == FALSE ? '<ol class="sortable">' : '<ol>';
 
       foreach( $array as $item ){

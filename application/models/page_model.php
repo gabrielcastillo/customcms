@@ -81,7 +81,8 @@ class Page_model extends Base_Model {
   }
 
   public function get_nested()
-  {
+  { 
+    $this->db->order_by('order');
     $pages = $this->db->get('pages')->result_array();
 
     $array = array();
