@@ -30,7 +30,7 @@ class Page_model extends Base_Model {
     'body'   => array(
       'field' => 'body', 
       'label' => 'body', 
-      'rules' => 'trim|required'
+      'rules' => 'trim'
       ),
     );
 
